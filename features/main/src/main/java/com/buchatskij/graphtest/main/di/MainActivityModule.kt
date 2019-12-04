@@ -1,13 +1,18 @@
 package com.buchatskij.graphtest.main.di
 
-import com.buchatskij.graphtest.main.Test
+import androidx.lifecycle.ViewModel
+import com.buchatskij.graphtest.main.presentation.MainActivityViewModel
+import com.buchatskij.graphtest.root.di.ViewModelKey
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.multibindings.IntoMap
 
 @Module
-class MainActivityModule {
+abstract class MainActivityModule {
 
-    @Provides
-    fun provideGson(): Test = Test()
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainActivityViewModel::class)
+    protected abstract fun mainActivityViewModel(mainActivityViewModel: MainActivityViewModel): ViewModel
 
 }
