@@ -1,6 +1,8 @@
 rootProject.name = 'GraphTest'
 
 include ':app',
-        ':main'
+        ':main',
+        ':root'
 
-project(':main').projectDir = new File(rootDir, "features/main")
+project(':main').projectDir = new File(rootDir, 'features/main')
+project(':root').projectDir = new File(rootDir, 'root')

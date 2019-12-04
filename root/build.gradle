@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 
 enableKotlin(project)
 enableDagger(project)
-enableDataBinding(project)
 enableTest(project)
 
 android {
@@ -28,5 +27,11 @@ android {
 }
 
 dependencies {
-    implementation project(':root')
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
 }
