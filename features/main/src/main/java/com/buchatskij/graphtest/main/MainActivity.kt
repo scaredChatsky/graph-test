@@ -1,4 +1,4 @@
-package com.buchatskij.graphtest.features.main
+package com.buchatskij.graphtest.main
 
 import androidx.appcompat.app.AppCompatActivity
 

@@ -1,2 +1,6 @@
-include ':app'
-rootProject.name='GraphTest'
+rootProject.name = 'GraphTest'
+
+include ':app',
+        ':main'
+
+project(':main').projectDir = new File(rootDir, "features/main")
