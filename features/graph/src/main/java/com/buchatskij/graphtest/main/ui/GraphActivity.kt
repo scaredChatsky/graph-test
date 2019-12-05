@@ -2,6 +2,7 @@ package com.buchatskij.graphtest.main.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.buchatskij.graphtest.graph.R
@@ -38,5 +39,17 @@ class GraphActivity : BaseActivity() {
         }
 
         viewModel.setPointsCount(intent.getIntExtra(EXTRA_POINT_COUNT, 0))
+
+        initHandlers()
+    }
+
+    private fun initHandlers() {
+        viewModel.errorMessage.observe(::getLifecycle) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.points.observe(::getLifecycle) {
+            // todo show graph
+        }
     }
 }

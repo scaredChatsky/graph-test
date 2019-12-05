@@ -30,5 +30,6 @@ android {
 
 dependencies {
     implementation project(':root')
+    implementation project(':network')
     implementation project(':uicommon')
 }

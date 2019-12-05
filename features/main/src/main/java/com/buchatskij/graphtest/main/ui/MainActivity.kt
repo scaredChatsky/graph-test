@@ -2,7 +2,6 @@ package com.buchatskij.graphtest.main.ui
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.buchatskij.graphtest.main.R
 import com.buchatskij.graphtest.main.databinding.ActivityMainBinding
 import com.buchatskij.graphtest.main.presentation.MainActivityViewModel
@@ -32,8 +31,6 @@ class MainActivity : BaseActivity() {
 
     private fun initHandlers() {
         val router = routerFactory.createRouter(this)
-        viewModel.route.observe(this, Observer {
-            router.route(it)
-        })
+        viewModel.route.observe(::getLifecycle, router::route)
     }
 }

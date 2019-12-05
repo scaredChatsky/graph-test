@@ -1,5 +1,7 @@
 package com.buchatskij.graphtest.di
 
+import com.buchatskij.graphtest.response.Response
+import com.buchatskij.graphtest.response.ResponseDeserializer
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -15,21 +17,20 @@ import javax.inject.Singleton
 class NetworkModule {
 
     companion object {
-        const val SERVER_BASE_URL = "https://demo.bankplus.ru/"
+        private const val SERVER_BASE_URL = "https://demo.bankplus.ru/mobws/json/"
     }
 
     @Singleton
     @Provides
     fun provideOkhttpClient(): OkHttpClient =
-        OkHttpClient()
-            .newBuilder()
-            .build()
+        OkHttpProvider.getUnsafeOkHttpClient()
 
     @Provides
     @Singleton
     fun provideGson(): Gson =
         GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_DASHES)
+            .registerTypeAdapter(Response::class.java, ResponseDeserializer())
             .create()
 
     @Provides
