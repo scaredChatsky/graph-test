@@ -1,8 +1,8 @@
 ext {
 
     rx_java_version = '2.2.15'
-    rx_android_version = "2.1.1"
-    rx_kotlin_version = "2.4.0"
+    rx_android_version = '2.1.1'
+    rx_kotlin_version = '2.4.0'
 
     retrofit_version = '2.6.1'
     okhttp_version = '4.2.1'
@@ -14,8 +14,13 @@ ext {
     kotlin_version = '1.3.61'
     gradle_version = '3.5.2'
 
-    junit_version = "4.12"
+    junit_version = '4.12'
     mockito_kotlin_version = '2.2.0'
+
+    app_compat_version = '1.1.0'
+    recyclerview_version = '1.1.0'
+    constraint_layout_version = '1.1.3'
+    material_version = '1.0.0'
 }
 
 def enableKotlin(project) {
@@ -27,8 +32,8 @@ def enableKotlin(project) {
     }
 
     project.dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-        testImplementation "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+        testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     }
 }
 
@@ -62,9 +67,27 @@ def enableTest(currentProject) {
     }
 
     currentProject.dependencies {
-        testImplementation "junit:junit:${junit_version}"
+        testImplementation "junit:junit:$junit_version"
         testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
         testImplementation "android.arch.core:core-testing:$lifecycle_version"
+    }
+}
+
+def initializeCompileOptions() {
+    subprojects {
+        afterEvaluate {subProject ->
+            if (subProject.hasProperty("android")) {
+                android {
+                    compileOptions {
+                        sourceCompatibility JavaVersion.VERSION_1_8
+                        targetCompatibility JavaVersion.VERSION_1_8
+                    }
+                    kotlinOptions {
+                        jvmTarget = JavaVersion.VERSION_1_8
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -72,3 +95,4 @@ ext.enableKotlin = this.&enableKotlin
 ext.enableDataBinding = this.&enableDataBinding
 ext.enableDagger = this.&enableDagger
 ext.enableTest = this.&enableTest
+ext.initializeCompileOptions = this.&initializeCompileOptions

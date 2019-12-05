@@ -1,4 +1,4 @@
-package com.buchatskij.graphtest.root.ui
+package com.buchatskij.graphtest.uicommon
 
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerAppCompatActivity

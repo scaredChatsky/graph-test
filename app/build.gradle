@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 enableKotlin(project)
 enableDagger(project)
+enableDataBinding(project)
 
 android {
     compileSdkVersion 29
@@ -20,24 +21,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    implementation 'com.google.android.material:material:1.0.0'
-
     implementation project(':root')
+    implementation project(':uicommon')
     implementation project(':network')
     implementation project(':main')
 }

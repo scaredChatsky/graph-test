@@ -3,7 +3,6 @@ apply plugin: 'com.android.library'
 enableKotlin(project)
 enableDagger(project)
 enableDataBinding(project)
-enableTest(project)
 
 android {
     compileSdkVersion 29
@@ -29,5 +28,11 @@ android {
 
 dependencies {
     implementation project(':root')
-    implementation project(':uicommon')
+
+    api "androidx.appcompat:appcompat:$app_compat_version"
+
+    api "androidx.recyclerview:recyclerview:$recyclerview_version"
+    api "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+
+    api "com.google.android.material:material:$material_version"
 }

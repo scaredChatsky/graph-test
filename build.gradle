@@ -3,6 +3,8 @@
 buildscript {
     apply from: 'dependencies.gradle'
 
+    initializeCompileOptions()
+
     repositories {
         google()
         jcenter()

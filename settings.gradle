@@ -3,8 +3,10 @@ rootProject.name = 'GraphTest'
 include ':app',
         ':main',
         ':root',
-        ':network'
+        ':network',
+        ':uicommon'
 
 project(':main').projectDir = new File(rootDir, 'features/main')
-project(':root').projectDir = new File(rootDir, 'root')
-project(':network').projectDir = new File(rootDir, 'network')
+project(':root').projectDir = new File(rootDir, 'shared/root')
+project(':network').projectDir = new File(rootDir, 'shared/network')
+project(':uicommon').projectDir = new File(rootDir, 'shared/uicommon')
