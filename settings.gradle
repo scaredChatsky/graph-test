@@ -2,7 +2,9 @@ rootProject.name = 'GraphTest'
 
 include ':app',
         ':main',
-        ':root'
+        ':root',
+        ':network'
 
 project(':main').projectDir = new File(rootDir, 'features/main')
 project(':root').projectDir = new File(rootDir, 'root')
+project(':network').projectDir = new File(rootDir, 'network')
