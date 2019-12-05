@@ -7,7 +7,7 @@ import com.buchatskij.graphtest.di.ViewModelKey
 import com.buchatskij.graphtest.main.data.*
 import com.buchatskij.graphtest.main.domain.GetPointsListUseCase
 import com.buchatskij.graphtest.main.domain.GetPointsListUseCaseImpl
-import com.buchatskij.graphtest.main.domain.Point
+import com.buchatskij.graphtest.domain.Point
 import com.buchatskij.graphtest.main.domain.PointsRepository
 import com.buchatskij.graphtest.main.presentation.GraphViewModel
 import dagger.Binds

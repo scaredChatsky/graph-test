@@ -3,7 +3,7 @@ package com.buchatskij.graphtest.main.presentation
 import androidx.lifecycle.MutableLiveData
 import com.buchatskij.graphtest.base.BaseViewModel
 import com.buchatskij.graphtest.main.domain.GetPointsListUseCase
-import com.buchatskij.graphtest.main.domain.Point
+import com.buchatskij.graphtest.domain.Point
 import com.buchatskij.graphtest.uicommon.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

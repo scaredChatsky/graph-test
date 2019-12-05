@@ -2,7 +2,7 @@ package com.buchatskij.graphtest.main.data
 
 import com.buchatskij.graphtest.base.Converter
 import com.buchatskij.graphtest.response.Response
-import com.buchatskij.graphtest.main.domain.Point
+import com.buchatskij.graphtest.domain.Point
 import com.buchatskij.graphtest.main.domain.PointsRepository
 import io.reactivex.Single
 import javax.inject.Inject

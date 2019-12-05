@@ -2,7 +2,7 @@ package com.buchatskij.graphtest.main.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.buchatskij.graphtest.graph.R
@@ -35,6 +35,7 @@ class GraphActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         DataBindingUtil.setContentView<ActivityGraphBinding>(this, R.layout.activity_graph).also {
+            it.lifecycleOwner = this
             it.viewModel = viewModel
         }
 
@@ -45,11 +46,12 @@ class GraphActivity : BaseActivity() {
 
     private fun initHandlers() {
         viewModel.errorMessage.observe(::getLifecycle) {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-        }
-
-        viewModel.points.observe(::getLifecycle) {
-            // todo show graph
+            AlertDialog.Builder(this)
+                .setTitle(it)
+                .setOnDismissListener { onBackPressed() }
+                .setPositiveButton(R.string.ok) { _, _ ->
+                    onBackPressed()
+                }.show()
         }
     }
 }

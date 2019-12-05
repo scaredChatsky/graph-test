@@ -1,6 +1,6 @@
 package com.buchatskij.graphtest.main.data
 
-import com.buchatskij.graphtest.main.domain.Point
+import com.buchatskij.graphtest.domain.Point
 
 data class PointsResponse(val points: Array<Point>) {
 

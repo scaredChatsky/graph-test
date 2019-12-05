@@ -35,4 +35,6 @@ dependencies {
     api "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
 
     api "com.google.android.material:material:$material_version"
+
+    api "com.github.PhilJay:MPAndroidChart:$mp_chart_version"
 }
