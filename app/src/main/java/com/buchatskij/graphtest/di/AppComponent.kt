@@ -1,6 +1,6 @@
 package com.buchatskij.graphtest.di
 
-import android.app.Application
+import android.content.Context
 import com.buchatskij.graphtest.App
 import com.buchatskij.graphtest.main.di.MainActivityInjector
 import dagger.BindsInstance
@@ -22,7 +22,7 @@ interface AppComponent : AndroidInjector<App> {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(application: Application): Builder
+        fun context(context: Context): Builder
 
         fun build(): AppComponent
     }

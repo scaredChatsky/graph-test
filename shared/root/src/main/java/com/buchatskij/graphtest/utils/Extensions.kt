@@ -1,4 +1,4 @@
-package com.buchatskij.graphtest.root.utils
+package com.buchatskij.graphtest.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

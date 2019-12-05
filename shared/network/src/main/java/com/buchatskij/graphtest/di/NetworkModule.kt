@@ -1,4 +1,4 @@
-package com.buchatskij.graphtest.network.di
+package com.buchatskij.graphtest.di
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson

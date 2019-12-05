@@ -1,4 +1,4 @@
-package com.buchatskij.graphtest.root.di
+package com.buchatskij.graphtest.di
 
 import javax.inject.Scope
 
