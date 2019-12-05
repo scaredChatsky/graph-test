@@ -2,7 +2,7 @@ package com.buchatskij.graphtest.router
 
 enum class Route {
 
-    POINTS_SCREEN;
+    GRAPH_SCREEN;
 }
 
 object RouteArguments {

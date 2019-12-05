@@ -16,7 +16,7 @@ class MainActivityViewModel @Inject constructor() : ViewModel() {
     fun handleGo() {
         val pointsCount = pointsCount.value?.toInt() ?: return
 
-        route.value = ArgumentedRoute(Route.POINTS_SCREEN)
+        route.value = ArgumentedRoute(Route.GRAPH_SCREEN)
             .apply {
                 putInt(RouteArguments.POINTS_COUNT_ARG, pointsCount)
             }

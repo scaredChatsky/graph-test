@@ -1,8 +1,8 @@
 package com.buchatskij.graphtest.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.buchatskij.graphtest.router.Router
-import com.buchatskij.graphtest.router.RouterImpl
+import com.buchatskij.graphtest.router.RouterFactory
+import com.buchatskij.graphtest.router.RouterFactoryImpl
 import dagger.Binds
 import dagger.Module
 
@@ -13,5 +13,5 @@ interface AppModule {
     fun bindViewModelFactory(viewModelFactory: ViewModelFactoryImpl): ViewModelProvider.Factory
 
     @Binds
-    fun bindRouter(routerImpl: RouterImpl): Router
+    fun bindRouterFactory(routerFactory: RouterFactoryImpl): RouterFactory
 }

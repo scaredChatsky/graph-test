@@ -4,9 +4,11 @@ include ':app',
         ':main',
         ':root',
         ':network',
-        ':uicommon'
+        ':uicommon',
+        ':graph'
 
 project(':main').projectDir = new File(rootDir, 'features/main')
+project(':graph').projectDir = new File(rootDir, 'features/graph')
 project(':root').projectDir = new File(rootDir, 'shared/root')
 project(':network').projectDir = new File(rootDir, 'shared/network')
 project(':uicommon').projectDir = new File(rootDir, 'shared/uicommon')

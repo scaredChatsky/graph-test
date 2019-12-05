@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.buchatskij.graphtest.main.R
 import com.buchatskij.graphtest.main.databinding.ActivityMainBinding
 import com.buchatskij.graphtest.main.presentation.MainActivityViewModel
-import com.buchatskij.graphtest.router.Router
+import com.buchatskij.graphtest.router.RouterFactory
 import com.buchatskij.graphtest.uicommon.BaseActivity
 import com.buchatskij.graphtest.utils.injectViewModel
 import javax.inject.Inject
@@ -17,7 +17,8 @@ class MainActivity : BaseActivity() {
         injectViewModel<MainActivityViewModel>(viewModelFactory)
     }
 
-    @Inject lateinit var router: Router
+    @Inject
+    lateinit var routerFactory: RouterFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initHandlers() {
+        val router = routerFactory.createRouter(this)
         viewModel.route.observe(this, Observer {
             router.route(it)
         })

@@ -1,17 +1,18 @@
 package com.buchatskij.graphtest.router
 
-import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import com.buchatskij.graphtest.main.ui.GraphActivity
 import javax.inject.Inject
 
-class RouterImpl @Inject constructor(private val context: Context) : Router {
+class RouterImpl @Inject constructor(private val activity: AppCompatActivity) : Router {
 
     override fun route(argumentedRoute: ArgumentedRoute) {
         when (argumentedRoute.route) {
-            Route.POINTS_SCREEN -> openPointsScreen(argumentedRoute)
+            Route.GRAPH_SCREEN -> openGraphScreen(argumentedRoute)
         }
     }
 
-    private fun openPointsScreen(route: ArgumentedRoute) {
-        // todo launch points activity
+    private fun openGraphScreen(route: ArgumentedRoute) {
+        GraphActivity.start(activity, route.getInt(RouteArguments.POINTS_COUNT_ARG))
     }
 }

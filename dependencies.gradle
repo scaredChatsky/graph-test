@@ -32,6 +32,7 @@ def enableKotlin(project) {
     }
 
     project.dependencies {
+        implementation "androidx.core:core-ktx:1.1.0"
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
         testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     }

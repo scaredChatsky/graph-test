@@ -2,6 +2,7 @@ package com.buchatskij.graphtest.di
 
 import android.content.Context
 import com.buchatskij.graphtest.App
+import com.buchatskij.graphtest.main.di.GraphActivityInjector
 import com.buchatskij.graphtest.main.di.MainActivityInjector
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +15,8 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         AppModule::class,
-        MainActivityInjector::class
+        MainActivityInjector::class,
+        GraphActivityInjector::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {

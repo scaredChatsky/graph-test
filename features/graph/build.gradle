@@ -1,32 +1,34 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 enableKotlin(project)
 enableDagger(project)
 enableDataBinding(project)
+enableTest(project)
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
+
+
     defaultConfig {
-        applicationId "com.buchatskij.graphtest"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation project(':root')
     implementation project(':uicommon')
-    implementation project(':network')
-    implementation project(':main')
-    implementation project(':graph')
 }
