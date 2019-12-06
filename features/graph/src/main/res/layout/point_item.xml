@@ -11,19 +11,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bottom_border"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@{Double.toString(point.x)}" />
+            android:background="@drawable/right_border"
+            android:text="@{Double.toString(point.x)}"
+            android:textAlignment="center" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@{Double.toString(point.y)}" />
+            android:text="@{Double.toString(point.y)}"
+            android:textAlignment="center" />
 
     </LinearLayout>
 </layout>
