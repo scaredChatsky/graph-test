@@ -1,5 +1,6 @@
 package com.buchatskij.graphtest.response
 
+import android.util.Base64
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
@@ -13,6 +14,8 @@ class ResponseDeserializer : JsonDeserializer<Response<Any>> {
         private const val RESULT_FIELD = "result"
         private const val RESPONSE_FIELD = "response"
         private const val MESSAGE_FIELD = "message"
+
+        private const val BASE64_ERROR_STATUS = -101
     }
 
     override fun deserialize(
@@ -38,7 +41,13 @@ class ResponseDeserializer : JsonDeserializer<Response<Any>> {
         } else if (jsonResponse != null && jsonResponse.has(RESULT_FIELD)) {
             with(jsonResponse) {
                 resultStatus = get(RESULT_FIELD).asInt
-                errorMessage = get(MESSAGE_FIELD).asString
+                val errorMessageJson = get(MESSAGE_FIELD).asString
+                errorMessage = if (resultStatus == BASE64_ERROR_STATUS) {
+                    val decodedMessageBytes = Base64.decode(errorMessageJson, Base64.DEFAULT)
+                    String(decodedMessageBytes)
+                } else {
+                    errorMessageJson
+                }
             }
         }
 
