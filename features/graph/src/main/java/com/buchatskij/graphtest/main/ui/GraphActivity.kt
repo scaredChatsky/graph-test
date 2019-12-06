@@ -51,12 +51,23 @@ class GraphActivity : BaseActivity() {
     }
 
     private fun initHandlers() {
+        var exit = true
         viewModel.errorMessage.observe(::getLifecycle) {
             AlertDialog.Builder(this)
                 .setTitle(it)
-                .setOnDismissListener { onBackPressed() }
-                .setPositiveButton(R.string.ok) { _, _ ->
+                .setOnDismissListener {
+                    if (!exit) {
+                        exit = true
+                        return@setOnDismissListener
+                    }
                     onBackPressed()
+                }
+                .setNegativeButton(R.string.cancel) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(R.string.retry) { _, _ ->
+                    exit = false
+                    viewModel.retry()
                 }.show()
         }
 

@@ -19,8 +19,14 @@ class GraphViewModel @Inject constructor(
 
     val uiState = MutableLiveData<UiState>(UiState.PROGRESS)
 
+    private var retryAction: Runnable? = null
+
     fun setPointsCount(pointsCount: Int) {
         updatePoints(pointsCount)
+    }
+
+    fun retry() {
+        retryAction?.run()
     }
 
     private fun updatePoints(pointsCount: Int) {
@@ -29,6 +35,9 @@ class GraphViewModel @Inject constructor(
             getPointsListUseCase(pointsCount)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
+                .doOnError {
+                    retryAction = Runnable { updatePoints(pointsCount) }
+                }
                 .subscribe(::handlePoints, ::handleError)
         )
     }
