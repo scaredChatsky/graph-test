@@ -1,4 +1,4 @@
-package com.buchatskij.graphtest.uicommon
+package com.buchatskij.graphtest.uicommon.adapters
 
 import android.graphics.Color
 import androidx.databinding.BindingAdapter

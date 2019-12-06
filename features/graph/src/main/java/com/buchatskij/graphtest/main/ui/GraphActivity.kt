@@ -38,16 +38,16 @@ class GraphActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initHandlers()
+
         DataBindingUtil.setContentView<ActivityGraphBinding>(this, R.layout.activity_graph).also {
+            it.activityGraphList.adapter = adapter
+
             it.lifecycleOwner = this
             it.viewModel = viewModel
-
-            it.activityGraphList.adapter = adapter
         }
 
         viewModel.setPointsCount(intent.getIntExtra(EXTRA_POINT_COUNT, 0))
-
-        initHandlers()
     }
 
     private fun initHandlers() {
