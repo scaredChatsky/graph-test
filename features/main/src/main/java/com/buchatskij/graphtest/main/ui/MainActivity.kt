@@ -23,6 +23,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main).also {
+            it.lifecycleOwner = this
             it.viewModel = viewModel
         }
 
