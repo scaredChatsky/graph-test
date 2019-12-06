@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="x_axis_name">x</string>
+    <string name="y_axis_name">y</string>
+</resources>

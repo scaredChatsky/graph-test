@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.buchatskij.graphtest.graph.R
 import com.buchatskij.graphtest.graph.databinding.ActivityGraphBinding
 import com.buchatskij.graphtest.main.presentation.GraphViewModel
+import com.buchatskij.graphtest.main.ui.list.GraphAdapter
 import com.buchatskij.graphtest.uicommon.BaseActivity
 import com.buchatskij.graphtest.utils.injectViewModel
 
@@ -27,6 +29,8 @@ class GraphActivity : BaseActivity() {
         }
     }
 
+    private val adapter = GraphAdapter()
+
     private val viewModel: GraphViewModel by lazy {
         injectViewModel<GraphViewModel>(viewModelFactory)
     }
@@ -37,6 +41,8 @@ class GraphActivity : BaseActivity() {
         DataBindingUtil.setContentView<ActivityGraphBinding>(this, R.layout.activity_graph).also {
             it.lifecycleOwner = this
             it.viewModel = viewModel
+
+            it.activityGraphList.adapter = adapter
         }
 
         viewModel.setPointsCount(intent.getIntExtra(EXTRA_POINT_COUNT, 0))
@@ -53,5 +59,9 @@ class GraphActivity : BaseActivity() {
                     onBackPressed()
                 }.show()
         }
+
+        viewModel.points.observe(this, Observer {
+            adapter.items = it
+        })
     }
 }
