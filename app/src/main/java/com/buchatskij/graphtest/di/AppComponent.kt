@@ -21,11 +21,8 @@ import javax.inject.Singleton
 )
 interface AppComponent : AndroidInjector<App> {
 
-    @Component.Builder
+    @Component.Factory
     interface Builder {
-        @BindsInstance
-        fun context(context: Context): Builder
-
-        fun build(): AppComponent
+        fun create(@BindsInstance context: Context): AppComponent
     }
 }
